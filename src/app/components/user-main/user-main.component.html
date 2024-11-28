@@ -1,0 +1,110 @@
+<header>
+  <div class="logo">
+    <h2><i class="fa fa-cogs" style="font-size: 35px; color: #FF9F1C; margin-right: 5px;"></i>Cas Service</h2>
+  </div>
+  <nav>
+    <ul>
+      <li><a routerLink="/userMain" routerLinkActive="active-link">Записатися на ремонт</a></li>
+      <li><a routerLink="/editProfile" routerLinkActive="active-link">Персональна інформація</a></li>
+    </ul>
+  </nav>
+  <div class="user-info">
+    <i class="fa fa-user-circle" style="font-size: 35px; color: #FF9F1C;"></i>
+    <span class="username">user</span>
+    <button (click)="logout()" class="logout-btn">Вихід</button>
+  </div>
+</header>
+<div class="main-content">
+  <form (ngSubmit)="createRepairRecord()" #repairForm="ngForm" class="repair-form">
+    <h2>Запис в автосервіс на обслуговування автомобіля</h2>
+    <div class="form-group">
+      <label for="scheduledDate">Дата і час:</label>
+      <input
+        id="scheduledDate"
+        name="scheduledDate"
+        type="datetime-local"
+        [(ngModel)]="repairRecord.scheduledDate"
+        required
+        #scheduledDate="ngModel"
+      />
+      <div *ngIf="scheduledDate.invalid && scheduledDate.touched" class="error-message">
+        *Вкажіть дату та час.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="repairDescription">Опис ремонту:</label>
+      <textarea
+        id="repairDescription"
+        name="repairDescription"
+        [(ngModel)]="repairRecord.repairDescription"
+        required
+        #repairDescription="ngModel"
+      ></textarea>
+      <div *ngIf="repairDescription.invalid && repairDescription.touched" class="error-message">
+        *Додайте опис ремонту.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cost">Вартість:</label>
+      <input
+        id="cost"
+        name="cost"
+        type="number"
+        [(ngModel)]="repairRecord.cost"
+        required
+        #cost="ngModel"
+      />
+      <div *ngIf="cost.invalid && cost.touched" class="error-message">
+        *Вкажіть вартість ремонту.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="carId">Автомобіль:</label>
+      <select
+        id="carId"
+        name="carId"
+        [(ngModel)]="repairRecord.carId"
+        required
+        #carId="ngModel"
+        class="select-input"
+      >
+        <option value="" disabled selected>Виберіть автомобіль</option>
+        <option *ngFor="let car of cars" [value]="car.id">
+          {{ car.make }} {{ car.model }} | Номер: {{ car.number }}
+        </option>
+      </select>
+      <div *ngIf="carId.invalid && carId.touched" class="error-message">
+        *Виберіть автомобіль.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="masterId">Майстер:</label>
+      <select
+        id="masterId"
+        name="masterId"
+        [(ngModel)]="repairRecord.masterId"
+        required
+        #masterId="ngModel"
+        class="select-input"
+      >
+        <option value="" disabled selected>Виберіть майстра</option>
+        <option value="947cc75c-2e71-43fb-9a2b-6d2f7f1e30db">Вася Петренко - Кузовщик</option>
+        <option value="f654571e-02ef-4c76-baca-e21c54c280ad">Іван Дмитренко - Майстер з ремонту ходової</option>
+        <option value="c8e773c7-edc7-4969-8729-c09c605b6365">Master Master - Моторист</option>
+      </select>
+      <div *ngIf="masterId.invalid && masterId.touched" class="error-message">
+        *Виберіть майстра.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="repairForm.invalid" class="submit-btn">
+      Додати запис
+    </button>
+  </form>
+</div>
+
+

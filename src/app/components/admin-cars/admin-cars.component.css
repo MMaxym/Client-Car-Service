@@ -1,0 +1,269 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2D2D3A;
+  color: #E1E1E6;
+  padding: 1px 50px;
+  margin: 0;
+  border-bottom: 1px solid #444;
+  font-family: 'Roboto', sans-serif;
+}
+
+header h2{
+  color: #E1E1E6;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+header nav ul li {
+  margin-left: 25px;
+}
+
+header nav ul li a {
+  color: #E1E1E6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 20px;
+  margin-right: 50px;
+}
+
+header nav ul li a:hover {
+  color: #FF9F1C;
+}
+
+header nav ul li a.active-link {
+  color: #FF9F1C;
+  font-weight: bold;
+  border-bottom: 2px solid #FF9F1C;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.username {
+  font-size: 26px;
+  color: #E1E1E6;
+}
+
+.logout-btn {
+  background-color: #FF9F1C;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-btn:hover {
+  background-color: #e68900;
+}
+
+.main-content {
+  padding: 40px;
+  background-color: #F4F4F9;
+  min-height: 100vh;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+h3, h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+}
+
+.latest-orders {
+  margin-top: 30px;
+  width: 100%;
+  margin-left: 0;
+  margin-right: auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.latest-orders h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.latest-orders table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.latest-orders th, .latest-orders td {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #E1E1E6;
+}
+
+.latest-orders th {
+  background-color: #FF9F1C;
+  color: white;
+  font-size: 16px;
+}
+
+.latest-orders tr:nth-child(even) {
+  background-color: #fff1df;
+}
+
+.latest-orders tr:hover {
+  background-color: #d6d6d6;
+}
+
+.latest-orders td {
+  font-size: 15px;
+  color: #555;
+}
+
+.latest-orders td a {
+  color: #4A90E2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.latest-orders td a:hover {
+  text-decoration: underline;
+  color: #FF9F1C;
+}
+
+.edit-btn{
+  background-color: transparent;
+  color: #FF9F1C;
+  border: none;
+  font-size: 20px;
+}
+
+.edit-btn:hover{
+  color: #e68900;
+}
+
+.delete-btn{
+  background-color: transparent;
+  color: #ff3530;
+  border: none;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.delete-btn:hover{
+  color: #c51411;
+}
+
+.add-cars{
+  margin-top: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  color: #ffffff;
+  background-color: #00b603;
+  cursor: pointer;
+}
+
+.add-cars:hover{
+  background-color: #059807;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.modal-content label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  color: #555;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+}
+
+.modal-content input {
+  width: 95%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-content select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.save-btn {
+  background-color: #00b603;
+  color: #fff;
+  border: none;
+  padding: 10px 70px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #059807;
+}
+
+.cancel-btn {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #aaa;
+}

@@ -1,0 +1,164 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2D2D3A;
+  color: #E1E1E6;
+  padding: 1px 50px;
+  margin: 0;
+  border-bottom: 1px solid #444;
+  font-family: 'Roboto', sans-serif;
+}
+
+header h2{
+  color: #E1E1E6;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+header nav ul li {
+  margin-left: 25px;
+}
+
+header nav ul li a {
+  color: #E1E1E6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 20px;
+  margin-right: 50px;
+}
+
+header nav ul li a:hover {
+  color: #FF9F1C;
+}
+
+header nav ul li a.active-link {
+  color: #FF9F1C;
+  font-weight: bold;
+  border-bottom: 2px solid #FF9F1C;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.username {
+  font-size: 26px;
+  color: #E1E1E6;
+}
+
+.logout-btn {
+  background-color: #FF9F1C;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-btn:hover {
+  background-color: #e68900;
+}
+
+.main-content {
+  padding: 40px;
+  background-color: #F4F4F9;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  padding-top: 110px;
+  background-color: #F4F4F9;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff2e4;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button.submit-btn {
+  padding: 12px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #FF9F1C;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.submit-btn:hover {
+  background-color: #e68900;
+}
+
+input.ng-invalid {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

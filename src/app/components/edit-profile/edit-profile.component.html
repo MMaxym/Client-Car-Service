@@ -1,0 +1,39 @@
+<header>
+  <div class="logo">
+    <h2><i class="fa fa-cogs" style="font-size: 35px; color: #FF9F1C; margin-right: 5px;"></i>Cas Service</h2>
+  </div>
+  <nav>
+    <ul>
+      <li><a routerLink="/userMain" routerLinkActive="active-link">Записатися на ремонт</a></li>
+      <li><a routerLink="/editProfile" routerLinkActive="active-link">Персональна інформація</a></li>
+    </ul>
+  </nav>
+  <div class="user-info">
+    <i class="fa fa-user-circle" style="font-size: 35px; color: #FF9F1C;"></i>
+    <span class="username">user</span>
+    <button (click)="logout()" class="logout-btn">Вихід</button>
+  </div>
+</header>
+
+<div class="main-content">
+  <form (ngSubmit)="editProfile()">
+    <h2>Редагування персональної інформації про користувача</h2>
+    <div class="form-group">
+      <label for="name">Ім'я:</label>
+      <input id="name" [(ngModel)]="name" name="name" type="text" required />
+    </div>
+    <div class="form-group">
+      <label for="surname">Прізвище:</label>
+      <input id="surname" [(ngModel)]="surname" name="surname" type="text" required />
+    </div>
+    <div class="form-group">
+      <label for="email">Електронна пошта:</label>
+      <input id="email" [(ngModel)]="email" name="email" type="email" required />
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Телефон:</label>
+      <input id="phoneNumber" [(ngModel)]="phoneNumber" name="phoneNumber" type="text" required />
+    </div>
+    <button type="submit" class="submit-btn">Зберегти зміни</button>
+  </form>
+</div>

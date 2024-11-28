@@ -1,0 +1,61 @@
+<header>
+  <div class="logo">
+    <h2><i class="fa fa-cogs" style="font-size: 35px; color: #FF9F1C; margin-right: 5px;"></i> Адмін панель Cas Service</h2>
+  </div>
+  <nav>
+    <ul>
+      <li><a routerLink="/adminMain" routerLinkActive="active-link">Головна</a></li>
+      <li><a routerLink="/adminCars" routerLinkActive="active-link">Автомобілі</a></li>
+    </ul>
+  </nav>
+  <div class="user-info">
+    <i class="fa fa-user-circle" style="font-size: 35px; color: #FF9F1C;"></i>
+    <span class="username">admin</span>
+    <button (click)="logout()" class="logout-btn">Вихід</button>
+  </div>
+</header>
+<div class="main-content">
+  <h2>Статистика роботи Автосервісу:</h2>
+  <div class="stats">
+    <div class="stat-item">
+      <h3>Активні замовлення</h3>
+      <p>{{ activeOrders }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>Завершені ремонти</h3>
+      <p>{{ completedRepairs }}</p>
+    </div>
+    <div class="stat-item">
+      <h3>Доступні механіки</h3>
+      <p>{{ mechanicsAvailable }}</p>
+    </div>
+  </div>
+  <div class="latest-orders">
+    <h2>Останні записи на ремонт:</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>№ замовлення</th>
+        <th>Автомобіль</th>
+        <th>Номер авто</th>
+        <th>Майстер</th>
+        <th>Опис ремонту</th>
+        <th>Статус</th>
+        <th>Дата</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of latestOrders">
+        <td>{{ order.orderNumber }}</td>
+        <td>{{ order.car }}</td>
+        <td>{{ order.carNumber }}</td>
+        <td>{{ order.master }}</td>
+        <td>{{ order.repairDescription }}</td>
+        <td>{{ order.status }}</td>
+        <td>{{ order.scheduledDate }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
