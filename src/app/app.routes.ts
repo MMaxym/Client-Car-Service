@@ -6,6 +6,8 @@ import { UserMainComponent} from './components/user-main/user-main.component';
 import { AdminMainComponent} from './components/admin-main/admin-main.component';
 import { AdminCarsComponent} from './components/admin-cars/admin-cars.component';
 import { EditProfileComponent} from './components/edit-profile/edit-profile.component';
+import {AdminRepairRecordsComponent} from './components/admin-repair-records/admin-repair-records.component';
+import {UserCarsComponent} from './components/user-cars/user-cars.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,4 +17,6 @@ export const routes: Routes = [
   { path: 'adminMain', component: AdminMainComponent, canActivate: [AuthGuard] },
   { path: 'adminCars', component: AdminCarsComponent, canActivate: [AuthGuard] },
   { path: 'editProfile', component: EditProfileComponent, canActivate: [AuthGuard] },
+  { path: 'adminRepairRecords', component: AdminRepairRecordsComponent, canActivate: [AuthGuard] },
+  { path: 'userCars', component: UserCarsComponent, canActivate: [AuthGuard] },
 ];

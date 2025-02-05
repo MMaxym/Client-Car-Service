@@ -84,8 +84,8 @@ h2 {
 }
 
 .repair-form {
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 400px;
+  margin: 30px auto;
   padding: 20px;
   background-color: #fff2e4;
   border: 1px solid #ccc;

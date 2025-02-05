@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RepairRecordService} from '../../services/repair-record.service';
+import { RepairRecordService } from '../../services/repair-record.service';
+import {NgForOf, NgIf} from '@angular/common';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
-import {NgForOf} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-admin-main',
@@ -9,43 +10,96 @@ import {NgForOf} from '@angular/common';
   imports: [
     RouterLink,
     NgForOf,
-    RouterLinkActive
+    RouterLinkActive,
+    FormsModule,
+    NgIf
   ],
   styleUrls: ['./admin-main.component.css']
 })
+
 export class AdminMainComponent implements OnInit {
   activeOrders = 0;
   completedRepairs = 0;
-  mechanicsAvailable = 4;
+  canceledRepairs = 0;
   latestOrders: any[] = [];
+  allRecords: any[] = [];
+  selectedDate: string = '';
+  noRecordsFound: boolean = false;
 
   constructor(
     private repairRecordService: RepairRecordService,
-    private router: Router,
-    ) {}
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.fetchRepairRecords();
+    this.fetchAllRepairRecords();
   }
 
-  fetchRepairRecords() {
+  fetchAllRepairRecords() {
     this.repairRecordService.getRepairRecords().subscribe((records: any[]) => {
+      if (!records) return;
+
+      this.allRecords = records;
+
       this.activeOrders = records.filter(record => record.status === 'В обробці').length;
       this.completedRepairs = records.filter(record => record.status === 'Виконано').length;
+      this.canceledRepairs = records.filter(record => record.status === 'Скасовано').length;
 
-      this.latestOrders = records
-        .sort((a, b) => new Date(b.scheduledDate).getTime() - new Date(a.scheduledDate).getTime())
-        .slice(0, 7)
-        .map(record => ({
-          orderNumber: record.id,
-          car: `${record.car.make} ${record.car.model}`,
-          carNumber: record.car.number,
-          master: `${record.master.name} ${record.master.surname}`,
-          status: record.status,
-          scheduledDate: new Date(record.scheduledDate).toLocaleDateString(),
-          repairDescription: record.repairDescription || 'Немає опису'
-        }));
+      this.latestOrders = this.formatOrders(records);
+      this.noRecordsFound = this.latestOrders.length === 0;
     });
+  }
+
+  filterByStatus(status: string) {
+    if (status === 'all') {
+      this.latestOrders = this.formatOrders(this.allRecords);
+    } else {
+      this.repairRecordService.getRepairRecordsByStatus(status).subscribe((filteredRecords: any[]) => {
+        if (!filteredRecords) return;
+        this.latestOrders = this.formatOrders(filteredRecords);
+      });
+    }
+  }
+
+  filterByDate(date: string) {
+    this.repairRecordService.getRepairRecordsByDate(date).subscribe((filteredRecords: any[]) => {
+      if (!filteredRecords) return;
+      this.latestOrders = this.formatOrders(filteredRecords);
+      this.noRecordsFound = this.latestOrders.length === 0;
+    });
+  }
+
+  onDateChange(event: any) {
+    const selectedDate = event.target.value;
+    if (selectedDate) {
+      this.filterByDate(selectedDate);
+    } else {
+      this.fetchAllRepairRecords();
+    }
+  }
+
+  resetFilters() {
+    this.selectedDate = '';
+    this.fetchAllRepairRecords();
+  }
+
+  formatOrders(records: any[]) {
+    if (!records || records.length === 0) return [];
+
+    return records
+      .sort((a, b) => new Date(b.scheduledDate).getTime() - new Date(a.scheduledDate).getTime())
+      .map(record => ({
+        orderNumber: record.id,
+        car: record.car ? `${record.car.make} ${record.car.model}` : 'Невідоме авто',
+        carNumber: record.car?.number || 'Немає номеру',
+        master: record.master
+          ? `${record.master.name} ${record.master.surname} (${record.master.specialization})`
+          : 'Невідомий майстер',
+        cost: `${record.cost}₴`,
+        status: record.status || 'Невідомий статус',
+        scheduledDate: record.scheduledDate ? new Date(record.scheduledDate).toLocaleDateString() : 'Немає дати',
+        repairDescription: record.repairDescription || 'Немає опису'
+      }));
   }
 
   logout(): void {
@@ -56,3 +110,4 @@ export class AdminMainComponent implements OnInit {
     }
   }
 }
+

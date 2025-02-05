@@ -1,0 +1,177 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2D2D3A;
+  color: #E1E1E6;
+  padding: 1px 50px;
+  margin: 0;
+  border-bottom: 1px solid #444;
+  font-family: 'Roboto', sans-serif;
+}
+
+header h2{
+  color: #E1E1E6;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+
+header nav ul li {
+  margin-left: 25px;
+}
+
+header nav ul li a {
+  color: #E1E1E6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 20px;
+  margin-right: 50px;
+}
+
+header nav ul li a:hover {
+  color: #FF9F1C;
+}
+
+header nav ul li a.active-link {
+  color: #FF9F1C;
+  font-weight: bold;
+  border-bottom: 2px solid #FF9F1C;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.username {
+  font-size: 26px;
+  color: #E1E1E6;
+}
+
+.logout-btn {
+  background-color: #FF9F1C;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-btn:hover {
+  background-color: #e68900;
+}
+
+.main-content {
+  padding: 40px;
+  background-color: #F4F4F9;
+  min-height: 100vh;
+}
+
+.car-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #F4F4F9;
+}
+
+.car-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 450px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.car-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #E1E1E6;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.car-header h3 {
+  color: #2D2D3A;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.car-number {
+  font-size: 14px;
+  color: #666;
+}
+
+.repair-section h4 {
+  color: #2D2D3A;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.repair-item {
+  background: #E1E1E6;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.repair-item:hover {
+  background: #D1D1DA;
+}
+
+.repair-date {
+  font-size: 14px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.repair-desc {
+  color: #7c7c7c;
+}
+
+.repair-cost {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FF9F1C;
+}
+
+.repair-status {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.status-pending {
+  color: #1c6bff;
+}
+
+.status-in-progress {
+  color: #ff0008;
+}
+
+.status-completed {
+  color: #28A745;
+}
+
+.no-repairs {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  padding: 10px;
+}

@@ -1,0 +1,97 @@
+<header>
+  <div class="logo">
+    <h2><i class="fa fa-cogs" style="font-size: 35px; color: #FF9F1C; margin-right: 5px;"></i> Адмін панель Cas Service</h2>
+  </div>
+  <nav>
+    <ul>
+      <li><a routerLink="/adminMain" routerLinkActive="active-link">Головна</a></li>
+      <li><a routerLink="/adminRepairRecords" routerLinkActive="active-link">Обрабка записів на ремонт</a></li>
+      <li><a routerLink="/adminCars" routerLinkActive="active-link">Автомобілі</a></li>
+    </ul>
+  </nav>
+  <div class="user-info">
+    <i class="fa fa-user-circle" style="font-size: 35px; color: #FF9F1C;"></i>
+    <span class="username">admin</span>
+    <button (click)="logout()" class="logout-btn">Вихід</button>
+  </div>
+</header>
+
+<body>
+    <div class="main-content">
+      <h2>Пошук запису про ремонт</h2>
+      <div class="search-box">
+        <input type="text" [(ngModel)]="searchId" placeholder="Введіть ID запису">
+        <button (click)="findRepairRecord()">Знайти</button>
+      </div>
+
+      <div *ngIf="errorMessage" class="no-records-message">
+        {{ errorMessage }}
+      </div>
+
+      <div class="repair-record-details" *ngIf="repairRecord">
+        <h2>Деталі ремонту</h2>
+
+        <div class="detail-row">
+          <p><strong>ID:</strong> {{ repairRecord.id }}</p>
+        </div>
+
+        <div class="detail-row">
+          <p><strong>Дата ремонту:</strong> {{ repairRecord.scheduledDate | date:'yyyy-MM-dd HH:mm' }}</p>
+        </div>
+
+        <div class="detail-row">
+          <p><strong>Статус:</strong>
+            <select class="status" [(ngModel)]="repairRecord.status">
+              <option value="В обробці" [selected]="repairRecord.status === 'В обробці'">В обробці</option>
+              <option value="Виконано" [selected]="repairRecord.status === 'Виконано'">Виконано</option>
+              <option value="Скасовано" [selected]="repairRecord.status === 'Скасовано'">Скасовано</option>
+            </select>
+            <button class="update-status-btn" (click)="updateStatus()">Оновити статус</button>
+          </p>
+        </div>
+
+        <div class="detail-row">
+          <p><strong>Опис ремонту:</strong> {{ repairRecord.repairDescription }}</p>
+        </div>
+
+        <div class="detail-row">
+          <label for="cost">
+            <strong>Вартість:</strong>
+            <input type="number" id="cost" [(ngModel)]="repairRecord.cost" placeholder="Оновіть вартість">
+          </label>
+          <button class="update-btn" (click)="updateCost()">Оновити вартість</button>
+        </div>
+
+        <h3>Авто</h3>
+        <div class="detail-row">
+          <p>{{ repairRecord.car.make }} {{ repairRecord.car.model }} ({{ repairRecord.car.number }})</p>
+        </div>
+        <div class="detail-row">
+          <p><strong>VIN:</strong> {{ repairRecord.car.vin }}</p>
+        </div>
+
+        <h3>Власник</h3>
+        <div class="detail-row">
+          <p>{{ repairRecord.car.user.name }} {{ repairRecord.car.user.surname }}</p>
+        </div>
+        <div class="detail-row">
+          <p><strong>Телефон:</strong> {{ repairRecord.car.user.phoneNumber }}</p>
+        </div>
+
+        <h3>Майстер</h3>
+        <div class="detail-row">
+          <p>{{ repairRecord.master.name }} {{ repairRecord.master.surname }}</p>
+        </div>
+        <div class="detail-row">
+          <p><strong>Телефон:</strong> {{ repairRecord.master.phoneNumber }}</p>
+        </div>
+        <div class="detail-row">
+          <p><strong>Спеціалізація:</strong> {{ repairRecord.master.specialization }}</p>
+        </div>
+      </div>
+    </div>
+</body>
+
+
+
+

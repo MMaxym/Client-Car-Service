@@ -252,3 +252,176 @@ h3, h2 {
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+body{
+  background-color: #F4F4F9;
+  padding: 40px;
+}
+
+.main-content {
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  max-height: 1240px;
+  margin: auto;
+}
+
+h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-top: 25px;
+  color: #000000;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.search-box input {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 300px;
+  transition: 0.3s;
+}
+
+.search-box input:focus {
+  border-color: #FF9F1C;
+  outline: none;
+}
+
+.status {
+  padding: 9px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 150px;
+  transition: 0.3s;
+}
+
+.status:focus {
+  border-color: #FF9F1C;
+  outline: none;
+}
+
+#cost{
+  padding: 9px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100px;
+  transition: 0.3s;
+}
+
+#cost:focus {
+  border-color: #FF9F1C;
+  outline: none;
+}
+
+.search-box button {
+  padding: 12px 25px;
+  background-color: #FF9F1C;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  background-color: #e58d1d;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row span {
+  font-weight: bold;
+  color: #555;
+}
+
+.status-select, .price-input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 220px;
+  transition: 0.3s;
+}
+
+.status-select:focus, .price-input:focus {
+  border-color: #FF9F1C;
+  outline: none;
+}
+
+.update-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.update-btn:hover {
+  background-color: #45a049;
+}
+
+.update-status-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 238px;
+}
+
+.update-status-btn:hover {
+  background-color: #45a049;
+}
+
+.contact-info {
+  font-size: 16px;
+  background: #f8f8f8;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.contact-info strong {
+  color: #FF9F1C;
+}
+
+strong {
+  font-weight: bold;
+  color: #FF9F1C;
+}

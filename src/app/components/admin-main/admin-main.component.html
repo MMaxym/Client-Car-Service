@@ -5,6 +5,7 @@
   <nav>
     <ul>
       <li><a routerLink="/adminMain" routerLinkActive="active-link">Головна</a></li>
+      <li><a routerLink="/adminRepairRecords" routerLinkActive="active-link">Обрабка записів на ремонт</a></li>
       <li><a routerLink="/adminCars" routerLinkActive="active-link">Автомобілі</a></li>
     </ul>
   </nav>
@@ -17,22 +18,39 @@
 <div class="main-content">
   <h2>Статистика роботи Автосервісу:</h2>
   <div class="stats">
-    <div class="stat-item">
+    <div class="stat-item" (click)="filterByStatus('В обробці')">
       <h3>Активні замовлення</h3>
       <p>{{ activeOrders }}</p>
     </div>
-    <div class="stat-item">
+    <div class="stat-item" (click)="filterByStatus('Виконано')">
       <h3>Завершені ремонти</h3>
       <p>{{ completedRepairs }}</p>
     </div>
-    <div class="stat-item">
-      <h3>Доступні механіки</h3>
-      <p>{{ mechanicsAvailable }}</p>
+    <div class="stat-item" (click)="filterByStatus('Скасовано')">
+      <h3>Скасовані ремонти</h3>
+      <p>{{ canceledRepairs }}</p>
+    </div>
+    <div class="stat-item" (click)="filterByStatus('all')">
+      <h3>Усі записи</h3>
+      <p>{{ activeOrders + completedRepairs + canceledRepairs }}</p>
     </div>
   </div>
+  <p class="filter-text">*👉 Натисніть на відповідну картку, щоб відфільтрувати ремонти за статусом.</p>
   <div class="latest-orders">
-    <h2>Останні записи на ремонт:</h2>
-    <table>
+    <h2>Записи на ремонт автомобілів:</h2>
+    <div class="filters">
+      <div class="filter-item">
+        <input type="date" id="order-date" name="order-date" (change)="onDateChange($event)" [(ngModel)]="selectedDate">
+        <label for="order-date" class="filter-label">*👉Виберіть дату ремонтів</label>
+      </div>
+      <div class="filter-item">
+        <button class="reset-button" (click)="resetFilters()">Скинути</button>
+      </div>
+    </div>
+    <div *ngIf="noRecordsFound" class="no-records-message">
+      Записів за вибраною датою не знайдено.
+    </div>
+    <table *ngIf="latestOrders.length > 0">
       <thead>
       <tr>
         <th>№ замовлення</th>
@@ -40,6 +58,7 @@
         <th>Номер авто</th>
         <th>Майстер</th>
         <th>Опис ремонту</th>
+        <th>Вартість</th>
         <th>Статус</th>
         <th>Дата</th>
       </tr>
@@ -51,6 +70,7 @@
         <td>{{ order.carNumber }}</td>
         <td>{{ order.master }}</td>
         <td>{{ order.repairDescription }}</td>
+        <td>{{order.cost}}</td>
         <td>{{ order.status }}</td>
         <td>{{ order.scheduledDate }}</td>
       </tr>

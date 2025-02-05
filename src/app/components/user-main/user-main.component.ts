@@ -21,7 +21,7 @@ export class UserMainComponent {
   repairRecord = {
     scheduledDate: '',
     repairDescription: '',
-    cost: null,
+    cost: '0',
     carId: '',
     masterId: '',
   };
@@ -54,7 +54,7 @@ export class UserMainComponent {
     this.repairRecord = {
       scheduledDate: '',
       repairDescription: '',
-      cost: null,
+      cost: '0',
       carId: '',
       masterId: ''
     };

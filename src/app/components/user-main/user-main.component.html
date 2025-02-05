@@ -5,6 +5,7 @@
   <nav>
     <ul>
       <li><a routerLink="/userMain" routerLinkActive="active-link">Записатися на ремонт</a></li>
+      <li><a routerLink="/userCars" routerLinkActive="active-link">Мої автомобілі</a></li>
       <li><a routerLink="/editProfile" routerLinkActive="active-link">Персональна інформація</a></li>
     </ul>
   </nav>
@@ -43,21 +44,6 @@
       ></textarea>
       <div *ngIf="repairDescription.invalid && repairDescription.touched" class="error-message">
         *Додайте опис ремонту.
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="cost">Вартість:</label>
-      <input
-        id="cost"
-        name="cost"
-        type="number"
-        [(ngModel)]="repairRecord.cost"
-        required
-        #cost="ngModel"
-      />
-      <div *ngIf="cost.invalid && cost.touched" class="error-message">
-        *Вкажіть вартість ремонту.
       </div>
     </div>
 

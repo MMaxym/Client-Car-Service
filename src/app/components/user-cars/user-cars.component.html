@@ -1,0 +1,46 @@
+<header>
+  <div class="logo">
+    <h2><i class="fa fa-cogs" style="font-size: 35px; color: #FF9F1C; margin-right: 5px;"></i>Cas Service</h2>
+  </div>
+  <nav>
+    <ul>
+      <li><a routerLink="/userMain" routerLinkActive="active-link">Записатися на ремонт</a></li>
+      <li><a routerLink="/userCars" routerLinkActive="active-link">Мої автомобілі</a></li>
+      <li><a routerLink="/editProfile" routerLinkActive="active-link">Персональна інформація</a></li>
+    </ul>
+  </nav>
+  <div class="user-info">
+    <i class="fa fa-user-circle" style="font-size: 35px; color: #FF9F1C;"></i>
+    <span class="username">user</span>
+    <button (click)="logout()" class="logout-btn">Вихід</button>
+  </div>
+</header>
+<div class="car-list">
+  <div class="car-card" *ngFor="let carWithRepairs of carsWithRepairs">
+    <div class="car-header">
+      <h3>{{ carWithRepairs.car.make }} {{ carWithRepairs.car.model }}</h3>
+      <p class="car-number">Номер: {{ carWithRepairs.car.number }}</p>
+    </div>
+
+    <div class="repair-section">
+      <h4>Записи про ремонт:</h4>
+
+      <ul *ngIf="carWithRepairs.repairs.length > 0; else noRepairs">
+        <li class="repair-item" *ngFor="let repair of carWithRepairs.repairs">
+          <p class="repair-date">{{ repair.scheduledDate | date:'dd.MM.yyyy' }}</p>
+          <p class="repair-desc">{{ repair.repairDescription }}</p>
+          <p class="repair-cost">Вартість: <span>{{ repair.cost | currency:'UAH ' }}</span></p>
+          <p class="repair-status" [ngClass]="{
+            'status-pending': repair.status === 'В обробці',
+            'status-in-progress': repair.status === 'Скасовано',
+            'status-completed': repair.status === 'Виконано'
+          }">{{ repair.status }}</p>
+        </li>
+      </ul>
+
+      <ng-template #noRepairs>
+        <p class="no-repairs">Записів не знайдено</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
