@@ -22,6 +22,8 @@
       <p class="car-number">Номер: {{ carWithRepairs.car.number }}</p>
     </div>
 
+    <h3 class="total-sum">Загальна вартість всіх ремонтів: {{ carWithRepairs.totalCost | currency:'UAH ' }}</h3>
+
     <div class="repair-section">
       <h4>Записи про ремонт:</h4>
 

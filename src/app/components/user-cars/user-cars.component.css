@@ -75,10 +75,13 @@ header nav ul li a.active-link {
 
 .car-list {
   display: flex;
-  flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
   background-color: #F4F4F9;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 10px;
 }
 
 .car-card {
@@ -86,9 +89,10 @@ header nav ul li a.active-link {
   border-radius: 12px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 100%;
-  max-width: 450px;
+  max-width: 500px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 0 0 auto;
+  width: 450px;
 }
 
 .car-card:hover {
@@ -124,7 +128,7 @@ header nav ul li a.active-link {
 
 .repair-item {
   background: #E1E1E6;
-  padding: 10px;
+  padding: 20px;
   border-radius: 8px;
   margin-bottom: 10px;
   position: relative;
@@ -174,4 +178,8 @@ header nav ul li a.active-link {
   font-style: italic;
   text-align: center;
   padding: 10px;
+}
+
+.total-sum{
+  color: #f43a34;
 }

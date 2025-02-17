@@ -27,7 +27,11 @@ export class UserCarsComponent {
   private router: Router
   ) {}
 
-  carsWithRepairs: { car: any; repairs: any[] }[] = [];
+  carsWithRepairs: {
+    car: any;
+    repairs: any[];
+    totalCost: number;
+  }[] = [];
 
   ngOnInit(): void {
     this.loadCarsWithRepairRecords();
@@ -46,12 +50,19 @@ export class UserCarsComponent {
               userCars.some((car) => car.id === repairRecord.car.id)
             );
 
-            this.carsWithRepairs = userCars.map((car) => ({
-              car,
-              repairs: filteredRepairRecords.filter(
-                (repair) => repair.car.id === car.id
-              ),
-            }));
+            this.carsWithRepairs = userCars.map((car) => {
+              const carRepairs = filteredRepairRecords
+                .filter((repair) => repair.car.id === car.id)
+                .sort((a, b) => new Date(b.scheduledDate).getTime() - new Date(a.scheduledDate).getTime());
+
+              const totalCost = carRepairs.reduce((sum, repair) => sum + (repair.cost || 0), 0);
+
+              return {
+                car,
+                repairs: carRepairs,
+                totalCost,
+              };
+            });
           },
           error: (err) => {
             console.error('Помилка завантаження записів про ремонт:', err);
